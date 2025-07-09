@@ -83,7 +83,6 @@
 				"node-superfetch": "^0.2.3",
 				"npm": "^9.4.2",
 				"npmlog": "^7.0.1",
-			  "nayan-videos-downloader": "^0.1.0",
 				"openai": "^3.2.1",
 				"opusscript": "0.0.8",
 				"os": "^0.1.2",
