@@ -30,9 +30,9 @@ var callback = () => api.sendMessage({body:` ╾━╤デ╦︻(▀̿Ĺ̯▀̿ �
 
 ☄️Bot Name︎︎︎☄️  ${global.config.BOTNAME}
 
-🔥Bot Admin🔥─━━◉❖𝐀𝐘𝐄𝐒𝐇𝐀≛𝐊𝐇𝐀𝐍❖◉━━─💔🥀
+🔥Bot Admin🔥─━━◉❖🅧D 🅚I🅝G🧚🩷🪿❖◉━━─💔🥀
 
-🙈bot andmin owner facebook id link🙈➪ https://www.facebook.com/profile.php?id=61550268698294&mibextid=ZbWKwL 💞🕊️
+🙈bot andmin owner facebook id link🙈➪ https://www.facebook.com/profile.php?id=61577345783888&mibextid=ZbWKwL 💞🕊️
 
 👋For Any Kind Of Help Contact whatsp +92 9827##2189
 
@@ -40,7 +40,7 @@ var callback = () => api.sendMessage({body:` ╾━╤デ╦︻(▀̿Ĺ̯▀̿ �
 
 🌸Bot Prefix🌸☞︎︎︎☜︎︎︎✰ ${global.config.PREFIX}
 
-♥️Bot Owner♥️ ─━━◉❖𝐀𝐘𝐄𝐒𝐇𝐀≛𝐊𝐇𝐀𝐍❖◉━━─
+♥️Bot Owner♥️ ─━━◉❖🅧D 🅚I🅝G🧚🩷🪿❖◉━━─
 
 🥳UPTIME🥳
 
@@ -53,7 +53,7 @@ var callback = () => api.sendMessage({body:` ╾━╤デ╦︻(▀̿Ĺ̯▀̿ �
 
 🦢🍒•••ꞪɛᏒɛ ɪʂ ɮ❍┼ ❍ωɳɜɽ ɳaʍɜ•••🌷💞
 ┏━🕊️━━°❀•°:🎀🧸💙🧸🎀:°•❀°━━💞━┓
-🌸✦✧✧✧✧✰🍒─━━◉❖𝐀𝐘𝐄𝐒𝐇𝐀≛𝐊𝐇𝐀𝐍❖◉━━─🌿✰✧✧✧✧✦🌸
+🌸✦✧✧✧✧✰🍒─━━◉❖🅧D 🅚I🅝G🧚🩷🪿❖◉━━─🌿✰✧✧✧✧✦🌸
 ┗━🕊️━━°❀•°:🎀🧸💙🧸🎀:°•❀°━━💞━┛
 
 
