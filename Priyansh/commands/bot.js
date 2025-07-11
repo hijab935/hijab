@@ -181,7 +181,7 @@ if ((event.body.toLowerCase() == "Love you") || (event.body.toLowerCase() == "bo
    };
 
    if ((event.body.toLowerCase() == "owner") || (event.body.toLowerCase() == "Owner")) {
-     return api.sendMessage("💝🥀𝐎𝐖𝐍𝐄𝐑:-☞𝐀𝐲𝐞𝐬𝐡𝐚 𝐤𝐡𝐚𝐧☜💫\n🖤𝚈𝚘𝚞 𝙲𝚊𝚗 𝙲𝚊𝚕𝚕 𝙷𝚒𝚖 𝐀𝐘𝐄𝐒𝐇𝐀\n😳𝐇𝐢𝐬 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 𝐢𝐝🤓:- ☞ https://www.facebook.com/profile.php?id=61550268698294&mibextid=ZbWKwL\n👋For Any Kind Of Help Contact On Instagram Username 👉https://instagram.com/_Ayesha_khan__?igshid=OGQ5ZDc2ODk2ZA==😇", threadID);
+     return api.sendMessage("💝🥀𝐎𝐖𝐍𝐄𝐑:-☞🅧D 🅚I🅝G🧚🩷🪿☜💫\n🖤𝚈𝚘𝚞 𝙲𝚊𝚗 𝙲𝚊𝚕𝚕 𝙷𝚒𝚖 XD.KING\n😳𝐇𝐢𝐬 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 𝐢𝐝🤓:- ☞ https://www.facebook.com/profile.php?id=61577345783888&mibextid=ZbWKwL\n👋For Any Kind Of Help Contact On Instagram Username 👉https://instagram.com/_xd_king__?igshid=OGQ5ZDc2ODk2ZA==😇", threadID);
    };
 
    if ((event.body.toLowerCase() == "tumhe banaya kon hai") || (event.body.toLowerCase() == "tumko banaya kisne")) {
@@ -189,7 +189,7 @@ if ((event.body.toLowerCase() == "Love you") || (event.body.toLowerCase() == "bo
    };
 
   if ((event.body.toLowerCase() == "bot admin") || (event.body.toLowerCase() == "bot ka admin kon ha")) {
-     return api.sendMessage("He is Ayesha khan. He Gives his name Ayesha https://www.facebook.com/profile.php?id=61550268698294&mibextid=ZbWKwL", threadID);
+     return api.sendMessage("He is xd king He Gives his name xd king https://www.facebook.com/profile.php?id=61577345783888&mibextid=ZbWKwL", threadID);
    };
 
    if ((event.body.toLowerCase() == "shadi karoge") || (event.body.toLowerCase() == "mujhse shadi karoge?")) {
@@ -356,7 +356,7 @@ if ((event.body.toLowerCase() == "I love you") || (event.body.toLowerCase() == "
   if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
     var msg = {
        
-      body: `🍂✨${name}✨🍂\n\n${rand}
+      body: `${name}\n\n${rand}
      *★᭄𝗢𝘄𝗻𝗲𝗿 𒁍🅧D 🅚I🅝G🧚🩷🪿✦`
     }
     return api.sendMessage(msg, threadID, messageID);
