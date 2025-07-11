@@ -16,7 +16,7 @@ module.exports.run = async function({ api, event, Users, Currencies }) {
         var TOKEN = "6628568379%7Cc1e620fa708a1d5696fb991c1bde5662";
         var data = await Currencies.getData(event.senderID);
         var money = data.money
-        if( money < 696) api.sendMessage(`𝘆𝗘𝘄 𝗗𝗡'𝗧 𝗛𝗔𝘃𝗘 𝗘𝗡𝗼𝘂𝗚𝗛 𝗠𝗼𝗡𝗲𝗬➪💔'\n𝗙𝗼𝗿 𝗠𝗮𝗞𝗶𝗡𝗚 𝗠𝗼𝗡𝗲Y\n𝗧𝗬𝗣𝗘 : .Jail\n\n  ${global.config.PREFIX}\n\n𝗖𝗿𝗲𝗮𝗧𝗲𝗗 𝗕𝗬: 𝗠𝗿. 𝐀𝐘𝐄𝐒𝐇𝐀 𝐊𝐇𝐀𝐍➪😎`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
+        if( money < 696) api.sendMessage(`𝘆𝗘𝘄 𝗗𝗡'𝗧 𝗛𝗔𝘃𝗘 𝗘𝗡𝗼𝘂𝗚𝗛 𝗠𝗼𝗡𝗲𝗬➪💔'\n𝗙𝗼𝗿 𝗠𝗮𝗞𝗶𝗡𝗚 𝗠𝗼𝗡𝗲Y\n𝗧𝗬𝗣𝗘 : .Jail\n\n  ${global.config.PREFIX}\n\n𝗖𝗿𝗲𝗮𝗧𝗲𝗗 𝗕𝗬: 𝗠𝗿. 🅧D 🅚I🅝G🧚🩷➪😎`, event.threadID, event.messageID) //thay số tiền cần trừ vào 0, xóa money = 0
         else {
         var tile = Math.floor(Math.random() * 101);
         
