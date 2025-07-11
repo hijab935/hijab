@@ -1,6 +1,6 @@
 const fs = require("fs");
 module.exports.config = {
-  name: "admin2",
+  name: "admin",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "𝙋𝙧𝙞𝙮𝙖𝙣𝙨𝙝 𝙍𝙖𝙟𝙥𝙪𝙩", 
@@ -14,9 +14,9 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   var { threadID, messageID } = event;
   if (event.body.indexOf("ADMIN")==0 || event.body.indexOf("Admin")==0 || event.body.indexOf("/Admin")==0 || event.body.indexOf("#admin")==0) {
     var msg = {
-        body: "🫅 𝐀𝐃𝐌𝐈𝐍 𝐏𝐑𝐎𝐅𝐈𝐋𝐄 🫅",
+        body: "🫅 𝐎𝐖𝐍𝐄𝐑 𝐏𝐑𝐎𝐅𝐈𝐋𝐄 🫅",
         attachment: 
-fs.createReadStream(__dirname + `/noprefix/Screenshot_20250201-085657~1.png`)
+fs.createReadStream(__dirname + `/noprefix/IMG_20250711_174424.jpg`)
       }
       api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("🫅", event.messageID, (err) => {}, true)
