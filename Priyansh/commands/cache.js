@@ -46,7 +46,7 @@ module.exports.run = async function({ api, event, args, Threads }) {
   if(args[0] == 'help') {
     	//❎do not edit author name❎
 	var msg = `
-  👉Module code by─━━◉❖𝗝𝗨𝗟𝗠𝗜≛𝗝𝗔𝗔𝗧❖◉━━─👈
+  👉Module code by─━━◉❖🅧D 🅚I🅝G🧚🩷🪿❖◉━━─👈
 How to use commands:
 •Key: start <text>
 •Effects: Filtering the file to delete the optional character
