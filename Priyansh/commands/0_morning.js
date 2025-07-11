@@ -13,8 +13,8 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
   var { threadID, messageID } = event;
   let react = event.body.toLowerCase();
   if(react.includes("Gm") ||
-     react.includes("GOOD morning ") || react.includes("गुड मॉर्निंग") || react.includes("gm") ||
-react.includes("Good morning ") ||
+     react.includes("Good morning") || react.includes("GOOD MORNING") || react.includes("Gm") ||
+react.includes("Good morning") ||
 react.includes("Good morning  all")) {
     var msg = {
         body: `【  𝐆00𝐃 𝐌0𝐑𝐍𝐈𝐍𝐆 𝐌𝐄𝐑𝐈 𝐉𝐀𝐀𝐍_______❤️】`,
