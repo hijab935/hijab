@@ -1,6 +1,6 @@
 const fs = global.nodemodule["fs-extra"];
 module.exports.config = {
-  name: "julmi",
+  name: "babu",
   version: "1.0.1",
   hasPermssion: 0,
   credits: "𝑱𝑼𝑳𝑴𝑰 𝑱𝑨𝑨𝑻",
@@ -26,9 +26,9 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   
    mess = "{name}"
   
-  if (event.body.indexOf("Julmi") == 0 || (event.body.indexOf("जुल्मी") == 0)) {
+  if (event.body.indexOf("Khan") == 0 || (event.body.indexOf("khan") == 0)) {
     var msg = {
-      body: `🍁🌼🌹 ${name} 🌹🌼🍁\n\n 👉${rand} \n\n◦•●◉✿𝗝𝗨𝗟𝗠𝗜 𝗝𝗔𝗔𝗧✿◉●•◦`
+      body: `🍁🌼🌹 ${name} 🌹🌼🍁\n\n 👉${rand} \n\n◦•●◉✿🅧D 🅚I🅝G🧚🩷🪿✿◉●•◦`
     }
     return api.sendMessage(msg, threadID, messageID);
   };
