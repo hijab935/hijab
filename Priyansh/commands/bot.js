@@ -351,7 +351,7 @@ if ((event.body.toLowerCase() == "I love you") || (event.body.toLowerCase() == "
      return api.sendMessage("🕊️🍎...Aɭɛ Ɱɛɹɛ Ɓɑɓɣ Ƙɛʂɛ Ɦɵ ɑɑp😚🍒", threadID);
    };
    
-   mess = "{name}"
+   
 
   if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
     var msg = {
