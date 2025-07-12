@@ -349,9 +349,7 @@ if ((event.body.toLowerCase() == "I love you") || (event.body.toLowerCase() == "
 
   if ((event.body.toLowerCase() == "janu") || (event.body.toLowerCase() == "JANU KESE HO ") || (event.body.toLowerCase() == "MAI XD KING HU") || (event.body.toLowerCase() == "XD KING") || (event.body.toLowerCase() == "main jaat")) {
      return api.sendMessage("🕊️🍎...Aɭɛ Ɱɛɹɛ Ɓɑɓɣ Ƙɛʂɛ Ɦɵ ɑɑp😚🍒", threadID);
-   };
-   
-   
+   };  
 
   if (event.body.indexOf("Bot") == 0 || (event.body.indexOf("bot") == 0)) {
     var msg = {
