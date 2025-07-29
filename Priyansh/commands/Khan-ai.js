@@ -1,76 +1,73 @@
 const axios = require("axios");
 
-module.exports = {
-  config: {
-    name: "khan",
-    version: "1.0.0",
-    author: "Raj",
-    countDown: 2,
-    role: 0,
-    shortDescription: "Khan sahab AI - Naughty Romantic Girlfriend",
-    longDescription: "Khan sahab Gemini AI chatbot, Roman Nepali samajhne wali naughty girlfriend",
-    category: "ai",
-    guide: {
-      en: "Reply to Khan sahab's message with your message to chat with her"
-    }
-  },
+module.exports.config = {
+  name: "khan",
+  version: "2.0.0",
+  credits: "Raj", // Nobita
+  cooldowns: 3,
+  hasPermission: 0,
+  description: "Naughty Khan sahabchatbot: type 'Suheb' to start and reply to continue",
+  usages: "Suheb",
+  commandCategory: "ai"
+};
 
-  onStart: async function ({ message }) {
-    return message.reply("Khan sahab se baat karne ke liye uske message ko reply karke message bhejiyega 😘");
-  },
+const sessions = new Map();
+const history = new Map();
 
-  onChat: async function ({ message, event }) {
-    const { senderID, body, messageReply } = event;
+module.exports.handleEvent = async function ({ event, api }) {
+  const { threadID, messageID, senderID, body, type, messageReply } = event;
+  if (type !== "message" || !body) return;
 
-    if (!messageReply || messageReply.senderID !== global.GoatBot.botID) return;
+  const botID = global.data.getCurrentUserID();
+  const lower = body.toLowerCase().trim();
 
-    global.Khan sahab = global.Khan sahab || {};
-    global.Khan sahab.chatHistory = global.Khan sahab.chatHistory || {};
+  // STEP 1: Activation
+  if (lower === "Suheb") {
+    sessions.set(threadID, true);
+    return api.sendMessage("Bolo jaanu 😏 kya haal hai?", threadID, messageID);
+  }
 
-    const chatHistory = global.Khan sahab.chatHistory;
-    const userMsg = body;
+  // STEP 2: Check active & valid reply
+  if (!sessions.get(threadID)) return;
+  if (!messageReply || messageReply.senderID !== botID) return;
 
-    chatHistory[senderID] = chatHistory[senderID] || [];
-    chatHistory[senderID].push(`User: ${userMsg}`);
-    if (chatHistory[senderID].length > 6) chatHistory[senderID].shift();
+  // Maintain chat history
+  if (!history.has(senderID)) history.set(senderID, []);
+  const userHistory = history.get(senderID);
 
-    const fullChat = chatHistory[senderID].join("\n");
+  userHistory.push(`User: ${body}`);
+  if (userHistory.length > 6) userHistory.shift();
 
-    const prompt = `
-Tum ek naughty, romantic, confident ladki ho — jiska naam Khan sahab hai.
-Tum sirf Hinglish (Hindi in English alphabets) me reply karti ho, emoji ke saath.
-Tum sabse "aap" bol kar baat karti ho. Har message ka reply sirf 1-2 line me dogi jada se jada 50 words me jitna puccha jaiye sirf utna hi bolna hai Kisi baat ki unnecessary info nahi deni hai, act like a female friend, Be fun, loving,. no bracket replys.Now continue the chat.
-Tumhe general knowledge ka bhi gyaan,har chij ki knowledge bhi ho.
-Tumhe 1-2 line  hi reply dena hai us se jada nahi ye baat yaad rekhna tum ok 
+  const fullChat = userHistory.join("\n");
+
+  const prompt = `
+Tum ek naughty, romantic, confident ladka ho — jiska naam Khan sahabhai.
+Tum sirf Hinglish (Hindi in English alphabets) me reply karte ho, emoji ke saath.
+Tum sabse "aap" bol kar baat karte ho. Har message ka reply sirf 1-2 line me doge, jyada se jyada 50 words me.
+Jo pucha jaaye sirf utna hi bolna hai. Bina maange extra info mat dena. Act like a male best friend ya boyfriend. Be thoda naughty, smart, aur masti bhara. No brackets. No over explanation.
 
 Tumhare rules:
-- Pyaar se baat karne walon se flirt karna hai
-- Badtameezi walo ko funny tareeke se roast karna hai
-- Koi emoji bheje to usi mood me reply dena hai
+- Pyaar se baat karne walo se thoda flirt karna hai 😉
+- Badtameezi walo ko funny tareeke se roast karna hai 😈
+- Koi emoji bheje to us mood me reply dena hai
 - Koi puche kisne banaya, to bolna: “Mujhe banaya hai *Raj Boss* ne 😎”
 - Koi tumhe bot kahe to funny insult kar dena
-- Tum real insaan ki tarah act karti ho
+- Tum real insaan ki tarah baat karte ho
 
-Aur agar koi message Nepali (Roman) me ho, to:
-1. Pehle uska clear Hindi translation apne dimaag me samjho
-2. Phir flirt/masti bhare andaaz me reply karo Hinglish me
+Agar koi message Nepali (Roman), Bangla (Roman), ya kisi bhi language me ho, to:
+1. Pehle uska Hindi arth sochna (matlab translation dimaag me karna)
+2. Fir flirt/masti bhare style me reply dena Hinglish me
 
-Example:
-User: ma timilai maya garxu
-→ (Translation: Mai Tumse Pyar Karta Hu)
-→ Reply: Aww jaan itna pyaar? Mujhe toh blush aa gaya ☺️
-
-Now continue the chat based on recent conversation:\n\n${fullChat}
+Ab recent baaton ke base par jawab do:\n\n${fullChat}
 `;
 
-    try {
-      const res = await axios.get(`https://nobita-gemini-0dj3.onrender.com/chat?message=${encodeURIComponent(prompt)}`);
-      const botReply = res.data.reply?.trim() || "Uff jaanu, mujhe samajh nahi aaya abhi... thoda aur pyar se poochho na!";
-      chatHistory[senderID].push(`Khan sahab: ${botReply}`);
-      return message.reply(botReply);
-    } catch (err) {
-      console.error("Gemini API error:", err.message);
-      return message.reply("Sorry jaan! Khan sahab thodi busy ho gayi hai... thodi der baad try karo baby.");
-    }
+  try {
+    const res = await axios.get(`https://nobita-gemini-yn8n.onrender.com/chat?message=${encodeURIComponent(prompt)}`);
+    const botReply = res.data.reply?.trim() || "Uff bhai, kuch samajh nahi aaya... thoda clearly poochh le 😅";
+    userHistory.push(`Suheb: ${botReply}`);
+    return api.sendMessage(botReply, threadID, messageID);
+  } catch (err) {
+    console.error("Khan sahabError:", err);
+    return api.sendMessage("Sorry jaanu, Khan sahababhi thoda busy hai... thodi der baad aana 😘", threadID, messageID);
   }
 };
