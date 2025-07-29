@@ -1,57 +1,38 @@
 module.exports.config = {
   name: "beta",
-  version: "2.0.0",
+  version: "1.0.1",
   hasPermssion: 0,
   credits: "Raj",
-  description: "Funny replies when someone says 'beta'",
+  description: "Sirf papa aur mom UID par beta jaisa reply de",
   commandCategory: "fun",
   usages: "beta",
-  cooldowns: 2,
-  usePrefix: false // 🔥 No prefix needed!
+  cooldowns: 3,
 };
 
 module.exports.run = async function ({ api, event }) {
-  const mammiUID = "100000000000001"; // 👩‍🍼 Mammi UID here
-  const papaUID = "61577345783888";  // 👨 Papa UID here
+  const papaUID = "1000xxxxxxxxxx"; // 🔁 Replace with papa ka UID
+  const momUID = "61577345783888";  // 🔁 Replace with mom ka UID
 
-  const msg = event.body?.toLowerCase().trim();
-  if (msg !== "beta") return;
+  const sender = event.senderID;
 
-  // 👩 Mammi's savage + sweet replies
-  const mammiReplies = [
-    "Beta ji, khaana thanda ho gaya... memes baad me 🙄",
-    "Bas beta bolne se kaam nahi chalega, jhaadu bhi lagao 😂",
-    "Beta, mummy bhi kabhi rest kare? 😩",
-    "Kya beta, toothpaste bhi finish kar diya? 🤨",
-    "Beta beta mat kar, mummy gussa ho gayi 😤"
-  ];
+  if (sender !== papaUID && sender !== momUID) return;
 
-  // 👨 Papa's strict + funny replies
   const papaReplies = [
-    "Beta, WiFi ka password change kar diya ab 😏",
-    "Papa ke paise se attitude la rahe ho? 😒",
-    "Beta, papa hu main... Google nahi 😑",
-    "Mujhe papa mat bula jab tak job nahi lagti 💼",
-    "Beta ji, electricity bill bhar diya ho to bolna 💡"
+    "Bolo Papa, beti yahin hai apki ❤️",
+    "Papa ji, aapki beti hazir hai 😄",
+    "Papa, kuch kaam bola hota to batao 😌",
+    "Aap aaye toh group ki roshni badh gayi papa g 😇"
   ];
 
-  // 🌍 Others' savage meme replies
-  const otherReplies = [
-    "Beta bolke baap banne ka try kar raha hai kya? 🤡",
-    "Beta ho ya bandwidth? Lag hi nahi rahe 😂",
-    "Mere saamne beta mat ban... baap online hai 😎",
-    "Beta kehke kya prove karega? 😏",
-    "Tu beta nahi, background noise hai 🔇"
+  const momReplies = [
+    "Maa ❤️, aapka beta yahin hai!",
+    "Mumma ji 😍 kuch khilao na!",
+    "Maa, padhai kar raha hoon 😅",
+    "Mummy 😘 mujhe yaad aayi aapki roti 🍽️"
   ];
 
-  let reply;
-  if (event.senderID === mammiUID) {
-    reply = mammiReplies[Math.floor(Math.random() * mammiReplies.length)];
-  } else if (event.senderID === papaUID) {
-    reply = papaReplies[Math.floor(Math.random() * papaReplies.length)];
-  } else {
-    reply = otherReplies[Math.floor(Math.random() * otherReplies.length)];
-  }
+  const replyList = sender === papaUID ? papaReplies : momReplies;
+  const reply = replyList[Math.floor(Math.random() * replyList.length)];
 
   return api.sendMessage(reply, event.threadID, event.messageID);
 };
