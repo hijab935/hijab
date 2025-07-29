@@ -1,38 +1,49 @@
 module.exports.config = {
   name: "beta",
-  version: "1.0.1",
+  version: "1.0.3",
   hasPermssion: 0,
   credits: "Raj",
-  description: "Sirf papa aur mom UID par beta jaisa reply de",
+  description: "No prefix reply only to Papa and Mom UID when they say 'beta'",
   commandCategory: "fun",
   usages: "beta",
   cooldowns: 3,
+  usePrefix: false // 🔓 No prefix needed
 };
 
-module.exports.run = async function ({ api, event }) {
-  const papaUID = "1000xxxxxxxxxx"; // 🔁 Replace with papa ka UID
-  const momUID = "61577345783888";  // 🔁 Replace with mom ka UID
-
+module.exports.handleEvent = async function ({ api, event }) {
+  const papaUID = "61577345783888"; // 🔁 Replace with your Papa's Facebook UID
+  const momUID = "100098765432109";  // 🔁 Replace with your Mom's Facebook UID
   const sender = event.senderID;
+  const message = event.body?.toLowerCase();
 
-  if (sender !== papaUID && sender !== momUID) return;
+  if (!message || message !== "beta") return;
 
-  const papaReplies = [
-    "Bolo Papa, beti yahin hai apki ❤️",
-    "Papa ji, aapki beti hazir hai 😄",
-    "Papa, kuch kaam bola hota to batao 😌",
-    "Aap aaye toh group ki roshni badh gayi papa g 😇"
-  ];
+  if (sender === papaUID) {
+    const papaReplies = [
+      "Bolo Papa ji 👨‍🦳, beta hazir hai 🫡",
+      "Papa ❤️ aap aaye toh ghar roshan ho gaya 💡",
+      "Papa ji 😄 kuch kaam bolo na!",
+      "Papa, chai bana doon? ☕",
+      "Papa, aaj bhi school mat bhejna 🥲"
+    ];
+    const reply = papaReplies[Math.floor(Math.random() * papaReplies.length)];
+    return api.sendMessage(reply, event.threadID, event.messageID);
+  }
 
-  const momReplies = [
-    "Maa ❤️, aapka beta yahin hai!",
-    "Mumma ji 😍 kuch khilao na!",
-    "Maa, padhai kar raha hoon 😅",
-    "Mummy 😘 mujhe yaad aayi aapki roti 🍽️"
-  ];
+  if (sender === momUID) {
+    const momReplies = [
+      "Maa ji 🥹 aapki yaad aa gayi!",
+      "Mummy 😘 kuch khila do please!",
+      "Maa ❤️ aapka beta bhukhha hai 🍽️",
+      "Mummy, homework kar liya 🤓",
+      "Maa, bina bataye kahan chali gayi thi 😭"
+    ];
+    const reply = momReplies[Math.floor(Math.random() * momReplies.length)];
+    return api.sendMessage(reply, event.threadID, event.messageID);
+  }
 
-  const replyList = sender === papaUID ? papaReplies : momReplies;
-  const reply = replyList[Math.floor(Math.random() * replyList.length)];
-
-  return api.sendMessage(reply, event.threadID, event.messageID);
+  // ❌ Ignore if message is not from papa/mom
+  return;
 };
+
+module.exports.run = () => {};
