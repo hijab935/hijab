@@ -1,51 +1,98 @@
+const { loadImage, createCanvas } = require("canvas");
+const axios = require("axios");
+const fs = require("fs-extra");
+
 module.exports.config = {
   name: "pair",
-  version: "1.0.0", 
-  hasPermssion: 0,
-  credits: "PREM BABU",
-  description: "0Pairing",
-  commandCategory: "Love", 
-  usages: "pair", 
-  cooldowns: 0
+  version: "1.0.0",
+  author: "xemon | Converted by Raj",
+  countDown: 5,
+  role: 0,
+  shortDescription: "Pair two people",
+  longDescription: "Randomly pairs two users based on gender",
+  category: "love",
+  guide: "{pn}"
 };
-module.exports.run = async function({ api, event, args, Users, Threads, Currencies }) {
-        const axios = global.nodemodule["axios"];
-        const fs = global.nodemodule["fs-extra"];
-        // var data = await Currencies.getData(event.senderID);
-        var money = data.money
-        if(money < 1) api.sendMessage("You need 500 USD for 1 pairing, please use ${global.config.PREFIX}work to received money or ask for admin bot!\n🤑Theres something new to eat🤑",event.threadID,event.messageID)
-        else {
-         var tl = ['21%', '67%', '19%', '37%', '17%', '96%', '52%', '62%', '76%', '83%', '100%', '99%', "0%", "48%"];
-        var tle = tl[Math.floor(Math.random() * tl.length)];
-        let dataa = await api.getUserInfo(event.senderID);
-        let namee = await dataa[event.senderID].name
-        let loz = await api.getThreadInfo(event.threadID);
-        var emoji = loz.participantIDs;
-        var id = emoji[Math.floor(Math.random() * emoji.length)];
-        let data = await api.getUserInfo(id);
-        let name = await data[id].name
-        var arraytag = [];
-                arraytag.push({id: event.senderID, tag: namee});
-                arraytag.push({id: id, tag: name});
-        // api.changeNickname(`😘👉🔐🔐 ${name} Property 🔐🔐👈😘`, event.threadID, event.senderID);
-        // api.changeNickname(`😘👉🔐🔐 ${namee} Property🔐🔐👈😘`, event.threadID, id);
-        var sex = await data[id].gender;
-        var gender = sex == 2 ? "Male🧑" : sex == 1 ? "Female👩‍🦰" : "Trần Đức Bo";
-        // Currencies.setData(event.senderID, options = {money: money - 500})
-        let Avatar = (await axios.get( `https://graph.facebook.com/${id}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" } )).data;
-            fs.writeFileSync( __dirname + "/cache/avt.png", Buffer.from(Avatar, "utf-8") );
 
-          let gifLove = (await axios.get( `https://i.imgur.com/MBETCWy.gif`, { responseType: "arraybuffer" } )).data; 
-              fs.writeFileSync( __dirname + "/cache/giflove.png", Buffer.from(gifLove, "utf-8") );
-          
-        let Avatar2 = (await axios.get( `https://graph.facebook.com/${event.senderID}/picture?height=720&width=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" } )).data;
-            fs.writeFileSync( __dirname + "/cache/avt2.png", Buffer.from(Avatar2, "utf-8") );
-        var imglove = [];
-              imglove.push(fs.createReadStream(__dirname + "/cache/avt.png"));
-              imglove.push(fs.createReadStream(__dirname + "/cache/giflove.png"));
-              imglove.push(fs.createReadStream(__dirname + "/cache/avt2.png"));
-        var msg = {body:`─━━🅰︎🆈︎🅴︎🆂︎🅷︎🅰︎≛🅺︎🅷︎🅰︎🅽︎━━─\n𝗟𝗢 𝗠𝗜𝗟 𝗚𝗬𝗔 𝗔𝗔𝗣𝗞𝗔 𝗝𝗜𝗪𝗔𝗡 𝗦𝗔𝗧𝗛𝗜🤭🫶\n𝗔𝗕 𝗕𝗔𝗥 𝗕𝗔𝗥 𝗠𝗔𝗧 𝗕𝗢𝗟𝗡𝗔 𝗦𝗘𝗧𝗜𝗡𝗚👩‍❤️‍💋‍👨👫\𝗻𝗞𝗔𝗥𝗪𝗔𝗡𝗘 𝗞𝗢 😕🥲\𝗻𝗔𝗔𝗣 𝗗𝗢𝗡𝗢 𝗞𝗔 𝗣𝗬𝗔𝗥👉${tle} 𝗛𝗔𝗜 😮😐\n`+namee+" "+"💖"+" "+name, mentions: arraytag, attachment: imglove}
-        // var msg = {body: `🥰Successful pairing!\n💌Wish you two hundred years of happiness\n💕Double ratio: ${tle}%\n`+namee+" "+"💓"+" "+name, mentions: arraytag, attachment: imglove}  
-         return api.sendMessage(msg, event.threadID, event.messageID)
-      }
-}
+module.exports.run = async function ({ api, event, usersData }) {
+  const pathImg = __dirname + "/cache/pairbg.png";
+  const pathAvt1 = __dirname + "/cache/pair1.png";
+  const pathAvt2 = __dirname + "/cache/pair2.png";
+
+  const id1 = event.senderID;
+  const name1 = (await usersData.get(id1))?.name || "User 1";
+
+  const threadInfo = await api.getThreadInfo(event.threadID);
+  const all = threadInfo.userInfo;
+  let gender1 = "OTHER";
+
+  for (let user of all) {
+    if (user.id == id1) {
+      gender1 = user.gender === 1 ? "FEMALE" : user.gender === 2 ? "MALE" : "OTHER";
+    }
+  }
+
+  const botID = api.getCurrentUserID();
+  let candidates = [];
+
+  if (gender1 === "FEMALE") {
+    candidates = all.filter(u => u.gender === 2 && u.id !== id1 && u.id !== botID).map(u => u.id);
+  } else if (gender1 === "MALE") {
+    candidates = all.filter(u => u.gender === 1 && u.id !== id1 && u.id !== botID).map(u => u.id);
+  } else {
+    candidates = all.filter(u => u.id !== id1 && u.id !== botID).map(u => u.id);
+  }
+
+  if (candidates.length === 0) {
+    return api.sendMessage("⚠️ No suitable match found!", event.threadID, event.messageID);
+  }
+
+  const id2 = candidates[Math.floor(Math.random() * candidates.length)];
+  const name2 = (await usersData.get(id2))?.name || "User 2";
+
+  const matchPercent = Math.floor(Math.random() * 100) + 1;
+
+  const backgrounds = [
+    "https://i.postimg.cc/wjJ29HRB/background1.png",
+    "https://i.postimg.cc/zf4Pnshv/background2.png",
+    "https://i.postimg.cc/5tXRQ46D/background3.png"
+  ];
+  const backgroundURL = backgrounds[Math.floor(Math.random() * backgrounds.length)];
+
+  const userInfo1 = await api.getUserInfo(id1);
+  const userInfo2 = await api.getUserInfo(id2);
+  const avatarURL1 = userInfo1[id1]?.thumbSrc || "";
+  const avatarURL2 = userInfo2[id2]?.thumbSrc || "";
+
+  const avatar1 = (await axios.get(avatarURL1, { responseType: "arraybuffer" })).data;
+  fs.writeFileSync(pathAvt1, Buffer.from(avatar1, "utf-8"));
+
+  const avatar2 = (await axios.get(avatarURL2, { responseType: "arraybuffer" })).data;
+  fs.writeFileSync(pathAvt2, Buffer.from(avatar2, "utf-8"));
+
+  const background = (await axios.get(backgroundURL, { responseType: "arraybuffer" })).data;
+  fs.writeFileSync(pathImg, Buffer.from(background, "utf-8"));
+
+  const baseImage = await loadImage(pathImg);
+  const baseAvt1 = await loadImage(pathAvt1);
+  const baseAvt2 = await loadImage(pathAvt2);
+
+  const canvas = createCanvas(baseImage.width, baseImage.height);
+  const ctx = canvas.getContext("2d");
+
+  ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+  ctx.drawImage(baseAvt1, 100, 150, 300, 300);
+  ctx.drawImage(baseAvt2, 900, 150, 300, 300);
+
+  const finalBuffer = canvas.toBuffer();
+  fs.writeFileSync(pathImg, finalBuffer);
+
+  fs.removeSync(pathAvt1);
+  fs.removeSync(pathAvt2);
+
+  return api.sendMessage({
+    body: `💞Successful pairing!\n💌Wish you two hundred years of happiness. 🥰\nMay you both always be happy🙂\n👫 ${name1} + ${name2}\n❤️ Match Percentage: ${matchPercent}%`,
+    mentions: [{ tag: name2, id: id2 }],
+    attachment: fs.createReadStream(pathImg)
+  }, event.threadID, () => fs.unlinkSync(pathImg), event.messageID);
+};
