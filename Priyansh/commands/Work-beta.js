@@ -20,11 +20,11 @@ module.exports.handleEvent = async function ({ api, event }) {
 
   if (sender === papaUID) {
     const papaReplies = [
-      "Bolo Papa ji 👨‍🦳, beta hazir hai 🫡",
-      "Papa ❤️ aap aaye toh ghar roshan ho gaya 💡",
+      "Bolo Papa ji, beti🙋 hazir hai 🫡",
+      "Papa ❤️ aap aaye toh group roshan ho gaya 😍💡",
       "Papa ji 😄 kuch kaam bolo na!",
-      "Papa, chai bana doon? ☕",
-      "Papa, aaj bhi school mat bhejna 🥲"
+      "mere papa aa gye 😍🙋?",
+      "ji malik hukam kijiye aap🙋💋"
     ];
     const reply = papaReplies[Math.floor(Math.random() * papaReplies.length)];
     return api.sendMessage(reply, event.threadID, event.messageID);
