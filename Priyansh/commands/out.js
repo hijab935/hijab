@@ -1,13 +1,13 @@
 module.exports.config = {
   name: "leave",
-  version: "1.0.1",
+  version: "1.0.3",
   hasPermssion: 2,
-  credits: "𝐏𝐫𝐢𝐲𝐚𝐧𝐬𝐡 𝐑𝐚𝐣𝐩𝐮𝐭 + Raj Edit",
-  description: "Bot leaves the group (no prefix)",
+  credits: "Raj",
+  description: "Bot leaves group with custom message",
   commandCategory: "Admin",
-  usages: "out [tid]",
+  usages: "leave",
   cooldowns: 3,
-  usePrefix: false // ✅ no prefix
+  usePrefix: false // ✅ No Prefix
 };
 
 module.exports.handleEvent = async function({ api, event }) {
@@ -16,25 +16,30 @@ module.exports.handleEvent = async function({ api, event }) {
 
   if (!message) return;
 
-  // ✅ Trigger words (you can change this)
-  if (message === "bot nikal ja yha se" || message === "left ho ja" || message === "nikal yha se") {
-    // Only allow Admins to use this
+  // ✅ Trigger phrases
+  if (message === "nikal yha se" || message === "nikal group se" || message === "exit group") {
+    // Check if sender is admin
     const threadInfo = await api.getThreadInfo(event.threadID);
     const adminIDs = threadInfo.adminIDs.map(e => e.id);
     if (!adminIDs.includes(senderID)) return;
 
-    return api.removeUserFromGroup(api.getCurrentUserID(), event.threadID);
+    const farewell = "Ok 🅧D 🅚I🅝G🧚🩷🎸Boss Ja Rahi hu Group se 🥰";
+
+    await api.sendMessage(farewell, event.threadID);
+    setTimeout(() => {
+      api.removeUserFromGroup(api.getCurrentUserID(), event.threadID);
+    }, 2000);
   }
 };
 
 module.exports.run = async function({ api, event, args }) {
-  const tid = args.join(" ");
+  const tid = args[0];
   if (!tid) return api.removeUserFromGroup(api.getCurrentUserID(), event.threadID);
 
-  try {
-    await api.removeUserFromGroup(api.getCurrentUserID(), tid);
-    return api.sendMessage("The bot has left this group", event.threadID, event.messageID);
-  } catch (err) {
-    return api.sendMessage("❌ Unable to leave group. Check TID or permissions.", event.threadID);
-  }
+  const farewell = "ok malik ja rhi";
+
+  await api.sendMessage(farewell, event.threadID);
+  setTimeout(() => {
+    api.removeUserFromGroup(api.getCurrentUserID(), tid);
+  }, 2000);
 };
