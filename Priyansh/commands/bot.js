@@ -27,7 +27,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
    if ((event.body.toLowerCase() == "hug me") || (event.body.toLowerCase() == "hug")) {
        return api.sendMessage("Yahan Nahi ib chalo 🙈🙈😂", threadID);
      };
-   if ((event.body.toLowerCase() == "funny") || (event.body.toLowerCase() == "songs")) {
+   if ((event.body.toLowerCase() == "funny bot") || (event.body.toLowerCase() == "chutiya bot")) {
        return api.sendMessage("hai tamnna hamey tujhe Kam wali bay banaye🤣🤣", threadID);
      };
     if ((event.body.toLowerCase() == "🥰") || (event.body.toLowerCase() == "😱")) {
@@ -38,7 +38,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
      };
 
 
-      if ((event.body.toLowerCase() == "chutiya bot") || (event.body.toLowerCase() == "chutiye bot") || (event.body.toLowerCase() == "chumtiya bot") || (event.body.toLowerCase() == "chumtiye bot")) {
+      if ((event.body.toLowerCase() == "pagl bot") || (event.body.toLowerCase() == "chutiye bot") || (event.body.toLowerCase() == "chumtiya bot") || (event.body.toLowerCase() == "chumtiye bot")) {
        return api.sendMessage("Hmm... Tu Chutiya PhLe Ungli Kyun Ki Chomu 😾", threadID);
      };
 
@@ -167,7 +167,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
        return api.sendMessage("️❤️ Good Night too darling my sweet hurt 🥰", threadID, messageID);
      };
      if ((event.body.toLowerCase() == "tharki bot") || (event.body.toLowerCase() == "tharki")) {
-       return api.sendMessage("Tum tharki me to masoom sa bot hu🙄🙄🆗", threadID);
+       return api.sendMessage("𝐓𝐮𝐦 𝐓𝐚𝐡𝐫𝐤𝐢 𝐓𝐮𝐦𝐡𝐚𝐫𝐢 𝐁𝐯 𝐓𝐡𝐚𝐫𝐤𝐢 𝐓𝐮𝐦𝐡𝐚𝐫𝐞 𝐁𝐜𝐡𝐞 𝐓𝐡𝐚𝐫𝐤𝐢 𝐓𝐞𝐫𝐚 𝐏𝐮𝐫𝐚 𝐊𝐡𝐚𝐧𝐝𝐚𝐧 𝐓𝐡𝐚𝐫𝐤𝐢🫵🫵🫨", threadID);
      };
      if ((event.body.toLowerCase() == "السلام عليكم ورحمة الله وبركاته") || (event.body.toLowerCase() == "السلام عليكم")) {
        return api.sendMessage("وعلیکم السلام ورحمۃ اللہ وبرکاتہ ", threadID);
@@ -450,7 +450,7 @@ module.exports.handleEvent = async function({ api, event, args, Threads, Users }
   if ((event.body.toLowerCase() == "sharati Ladki ")) {return api.sendMessage("Are wo cute hai sharthi hai 🤣", threadID);
      };
 
-  if ((event.body.toLowerCase() == "Bos")) {return api.sendMessage("mera Boss 🅧D 🅚I🅝G🧚🩷 BAHOT cute hai ❤️🥰", threadID);
+  if ((event.body.toLowerCase() == "Boss")) {return api.sendMessage("mera Boss 🅧D 🅚I🅝G🧚🩷 BAHOT cute hai ❤️🥰", threadID);
      };
 
     if ((event.body.toLowerCase() == "🖤")) {return api.sendMessage("___)Ankho__🌿__m__🍒__pyar__💦dil___❣️__me__💥___khumar___🌹___pyar____🌿___toh____😴___nhi___💥___kar___🌿___mujhse____🌿🌹❣️__________________?🥰❣️❣️🥰❤️‍🩹 ", threadID);
