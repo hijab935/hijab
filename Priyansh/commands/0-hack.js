@@ -1,71 +1,103 @@
-#cmd install hack.js const axios = require("axios");
-const fs = require("fs-extra");
-const path = require("path");
-const { loadImage, createCanvas, registerFont } = require("canvas");
-
-// Optional: If you want custom font, use below and place TTF in fonts folder
-// registerFont(path.join(__dirname, 'fonts', 'your-font.ttf'), { family: 'CustomFont' });
-
-module.exports = {
-  config: {
-    name: "hack",
-    version: "1.2",
-    author: "Raj Modified by ChatGPT",
-    countDown: 5,
-    role: 0,
-    shortDescription: "Fake hacking image",
-    longDescription: "Sends a fake hacking template with tagged user's DP & name",
-    category: "fun",
-    guide: {
-      en: "{pn} @mention"
-    }
+module.exports.config = {
+  name: "hack",
+  version: "1.0.0",
+  hasPermssion: 0,
+  credits: "SHAAN KHAN",
+  description: "hack",
+  commandCategory: "hack",
+  usages: "@mention",
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
   },
-
-  onStart: async function ({ message, event }) {
-    const mention = Object.keys(event.mentions);
-    if (!mention[0]) return message.reply("тЭМ рдХреГрдкрдпрд╛ рдХрд┐рд╕реА рдХреЛ рдЯреИрдЧ рдХрд░реЗрдВ!");
-
-    const uid = mention[0];
-    const name = event.mentions[uid].replace("@", "");
-
-    try {
-      const backgroundUrl = "https://files.catbox";
-      const avatarUrl = `https://graph.facebook.com/${uid}/picture?height=512&width=512&access_token=350685531728|62f8ce9f74b12f84c123cc23437a4a32`;
-
-      const [bgRes, avatarRes] = await Promise.all([
-        axios.get(backgroundUrl, { responseType: "arraybuffer" }),
-        axios.get(avatarUrl, { responseType: "arraybuffer" })
-      ]);
-
-      const bgImg = await loadImage(bgRes.data);
-      const avatarImg = await loadImage(avatarRes.data);
-
-      const canvas = createCanvas(bgImg.width, bgImg.height);
-      const ctx = canvas.getContext("2d");
-
-      // Draw background
-      ctx.drawImage(bgImg, 0, 0);
-
-      // тЬЕ Draw user DP (adjust y = 500 to move upward)
-      ctx.drawImage(avatarImg, 85, 570, 130, 110); // x, y, width, height
-
-      // тЬЕ Draw user name next to DP
-      ctx.font = "bold 30px Arial";
-      ctx.fillStyle = "#000000";
-      ctx.fillText(name, 235, 635); // x, y
-
-      const outputPath = path.join(__dirname, "cache", `hack_${uid}.jpg`);
-      const buffer = canvas.toBuffer("image/jpeg");
-      fs.writeFileSync(outputPath, buffer);
-
-      message.reply({
-        body: "ЁЯза Hacking started... ЁЯТ╗",
-        attachment: fs.createReadStream(outputPath)
-      }, () => fs.unlinkSync(outputPath));
-
-    } catch (err) {
-      console.error(err);
-      message.reply("тЭМ рдкреНрд░реЛрд╕реЗрд╕ рдореЗрдВ рдХреБрдЫ рдЧрдбрд╝рдмрдбрд╝ рд╣реЛ рдЧрдИ!");
-    }
-  }
+  cooldowns: 0
 };
+
+module.exports.wrapText = (ctx, name, maxWidth) => {
+        return new Promise(resolve => {
+                if (ctx.measureText(name).width < maxWidth) return resolve([name]);
+                if (ctx.measureText('W').width > maxWidth) return resolve(null);
+                const words = name.split(' ');
+                const lines = [];
+                let line = '';
+                while (words.length > 0) {
+                        let split = false;
+                        while (ctx.measureText(words[0]).width >= maxWidth) {
+                                const temp = words[0];
+                                words[0] = temp.slice(0, -1);
+                                if (split) words[1] = `${temp.slice(-1)}${words[1]}`;
+                                else {
+                                        split = true;
+                                        words.splice(1, 0, temp.slice(-1));
+                                }
+                        }
+                        if (ctx.measureText(`${line}${words[0]}`).width < maxWidth) line += `${words.shift()} `;
+                        else {
+                                lines.push(line.trim());
+                                line = '';
+                        }
+                        if (words.length === 0) lines.push(line.trim());
+                }
+                return resolve(lines);
+        });
+} 
+
+module.exports.run = async function ({ args, Users, Threads, api, event, Currencies }) {
+  const { loadImage, createCanvas } = require("canvas");
+  const fs = global.nodemodule["fs-extra"];
+  const axios = global.nodemodule["axios"];
+  let pathImg = __dirname + "/cache/background.png";
+  let pathAvt1 = __dirname + "/cache/Avtmot.png";
+
+
+  var id = Object.keys(event.mentions)[0] || event.senderID;
+  var name = await Users.getNameUser(id);
+  var ThreadInfo = await api.getThreadInfo(event.threadID);
+
+  var background = [
+
+    "https://i.imghippo.com/files/qEl8678STs.png"
+];
+  var rd = background[Math.floor(Math.random() * background.length)];
+
+  let getAvtmot = (
+    await axios.get(
+      `https://graph.facebook.com/${id}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
+      { responseType: "arraybuffer" }
+    )
+  ).data;
+  fs.writeFileSync(pathAvt1, Buffer.from(getAvtmot, "utf-8"));
+
+  let getbackground = (
+    await axios.get(`${rd}`, {
+      responseType: "arraybuffer",
+    })
+  ).data;
+  fs.writeFileSync(pathImg, Buffer.from(getbackground, "utf-8"));
+
+  let baseImage = await loadImage(pathImg);
+  let baseAvt1 = await loadImage(pathAvt1);
+
+  let canvas = createCanvas(baseImage.width, baseImage.height);
+  let ctx = canvas.getContext("2d");
+  ctx.drawImage(baseImage, 0, 0, canvas.width, canvas.height);
+    ctx.font = "400 23px Arial";
+          ctx.fillStyle = "#1878F3";
+          ctx.textAlign = "start";
+
+
+          const lines = await this.wrapText(ctx, name, 1160);
+          ctx.fillText(lines.join('\n'), 200,497);//comment
+          ctx.beginPath();
+
+
+  ctx.drawImage(baseAvt1, 83, 437, 100, 101);
+
+  const imageBuffer = canvas.toBuffer();
+  fs.writeFileSync(pathImg, imageBuffer);
+  fs.removeSync(pathAvt1);
+  return api.sendMessage({ body: ` `, attachment: fs.createReadStream(pathImg) },
+      event.threadID,
+      () => fs.unlinkSync(pathImg),
+      event.messageID);
+    }
