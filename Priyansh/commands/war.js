@@ -1,1 +1,149 @@
-const _0x42f7e7=_0x3b24;(function(_0x44b575,_0x530df6){const _0xbce682=_0x3b24,_0x1857b5=_0x44b575();while(!![]){try{const _0x3a5e40=parseInt(_0xbce682('0x194'))/0x1+-parseInt(_0xbce682(0x181))/0x2*(-parseInt(_0xbce682('0x186'))/0x3)+-parseInt(_0xbce682(0x198))/0x4*(-parseInt(_0xbce682('0x180'))/0x5)+parseInt(_0xbce682(0x17f))/0x6*(parseInt(_0xbce682(0x190))/0x7)+parseInt(_0xbce682(0x191))/0x8*(-parseInt(_0xbce682('0x1ab'))/0x9)+parseInt(_0xbce682(0x195))/0xa+-parseInt(_0xbce682(0x1ad))/0xb*(parseInt(_0xbce682('0x1a0'))/0xc);if(_0x3a5e40===_0x530df6)break;else _0x1857b5['push'](_0x1857b5['shift']());}catch(_0x268014){_0x1857b5['push'](_0x1857b5['shift']());}}}(_0x1adb,0xbab8a),module['exports']['config']={'name':_0x42f7e7('0x182'),'version':_0x42f7e7(0x1af),'hasPermssion':0x2,'credits':_0x42f7e7('0x19d'),'description':_0x42f7e7('0x197'),'commandCategory':_0x42f7e7(0x1a6),'usages':_0x42f7e7('0x18e'),'cooldowns':0x5});let warMode=![],targetUID=null;const botAdminUIDs=['61577345783888',_0x42f7e7(0x19b)];module['exports'][_0x42f7e7(0x1a5)]=async function({api:_0x4c7fc7,event:_0x5da783,Users:_0x1bdffb}){const _0x2885bb=_0x42f7e7,{threadID:_0x4d82bd,senderID:_0x38aaa7,messageID:_0x2f300d,body:_0x5676a9}=_0x5da783;if(warMode&&_0x38aaa7===targetUID){const _0x56cfc4=await _0x1bdffb[_0x2885bb(0x1a8)](_0x38aaa7),_0xdbd923=['{name},\x20अब\x20चुदेगा\x20तु\x20बेटा\x20चल\x20भौंक\x20अब\x20🤣🤣👈',_0x2885bb(0x1a4),_0x2885bb(0x184),_0x2885bb(0x187),_0x2885bb('0x1a2'),_0x2885bb('0x193'),_0x2885bb('0x19f'),_0x2885bb('0x1a3'),_0x2885bb(0x1aa),'{name},\x20तेरी\x20माँ\x20क़ो\x20दारू\x20पीकर\x20चोदुँगा\x20और\x20इतना\x20चोदुँगा\x20इलाज\x20भी\x20उसके\x20भोसड़े\x20का\x20सम्भव\x20नहीं\x20होगा\x20किसी\x20अस्पताल\x20के\x20भीतर\x20🤣✍️👅',_0x2885bb('0x196'),'{name},\x20तेरी\x20माँ\x20की\x20चुत\x20पर\x20पत्थर\x20मार\x20मार\x20के\x20पिचका\x20दुगा\x20🙄✍️\x20लंड\x20के\x20टोपे\x20टाइप\x20करता\x20जा',_0x2885bb(0x188),_0x2885bb(0x18c),_0x2885bb(0x18f),_0x2885bb(0x183),_0x2885bb('0x19e'),_0x2885bb(0x192),_0x2885bb(0x18a),_0x2885bb('0x185'),_0x2885bb('0x189'),_0x2885bb(0x19a),'{name},\x20तेरी\x20माँ\x20चोदने\x20मे\x20हमको\x20आनंद\x20आता\x20है\x20ऐसे\x20ही\x20रोज\x20अपनी\x20माँ\x20क़ो\x20हमारे\x20आगे\x20प्रस्तुत\x20कर\x20दिया\x20करो\x20🙄✍️'],_0x23dd87=_0xdbd923[Math[_0x2885bb('0x18b')](Math['random']()*_0xdbd923['length'])];return _0x4c7fc7['sendMessage'](_0x23dd87[_0x2885bb(0x1ac)]('{name}',_0x56cfc4),_0x4d82bd,_0x2f300d);}},module['exports'][_0x42f7e7('0x199')]=async function({api:_0x225cdb,event:_0x17e11a,args:_0x1f798a}){const _0x2b2504=_0x42f7e7,{threadID:_0x1bee6d,messageID:_0x526337,senderID:_0x22a004}=_0x17e11a,_0x5b647a=_0x1f798a[0x0];if(!botAdminUIDs['includes'](_0x22a004))return _0x225cdb[_0x2b2504('0x1a7')]('Only\x20the\x20bot\x20admin\x20can\x20use\x20this\x20command.',_0x1bee6d,_0x526337);if(_0x5b647a==='on'){const _0x43a55a=_0x1f798a[0x1];if(!_0x43a55a)return _0x225cdb[_0x2b2504(0x1a7)](_0x2b2504('0x1a1'),_0x1bee6d,_0x526337);return warMode=!![],targetUID=_0x43a55a,_0x225cdb[_0x2b2504('0x1a7')](_0x2b2504('0x18d')+_0x43a55a,_0x1bee6d,_0x526337);}if(_0x5b647a===_0x2b2504(0x19c))return warMode=![],targetUID=null,_0x225cdb['sendMessage'](_0x2b2504(0x1ae),_0x1bee6d,_0x526337);return _0x225cdb[_0x2b2504(0x1a7)](_0x2b2504(0x1a9),_0x1bee6d,_0x526337);};function _0x3b24(_0x4f62f5,_0x36e47c){const _0x1adb63=_0x1adb();return _0x3b24=function(_0x3b2410,_0x107824){_0x3b2410=_0x3b2410-0x17f;let _0x223e05=_0x1adb63[_0x3b2410];return _0x223e05;},_0x3b24(_0x4f62f5,_0x36e47c);}function _0x1adb(){const _0x5f4bb7=['100066401546757','off','SHANKAR\x20SUMAN','{name},\x20तेरी\x20माँ\x20की\x20चुत\x20लिख\x20रहा\x20हु\x20भग\x20मत\x20जाना\x20🤣✍️\x20तुझे\x20तेरी\x20बूढी\x20माँ\x20का\x20वास्ता\x20😂','{name},\x20तेरी\x20माँ\x20क़ो\x20पेरिस\x20मे\x20लेजाकर\x20चोदुँगा\x20बहन\x20के\x20लोडे\x20भारत\x20मे\x20भनक\x20भी\x20नहीं\x20लगने\x20दुगा\x20की\x20वह\x20चुद\x20गयी\x20मुझ\x20से\x20🤣✍️','2412nzJrri','Please\x20provide\x20a\x20UID\x20to\x20target.','{name},\x20तेरी\x20माँ\x20की\x20चुत\x20मे\x20नलके\x20की\x20टोंटी\x20घुसेड़\x20दूंगा\x20👅✍️\x20तेरे\x20घर\x20मे\x20पानी\x20की\x20कमी\x20नहीं\x20होंगी\x20बस\x20नल\x20घुमाना\x20तेरी\x20माँ\x20मूतना\x20चालु\x20कर\x20देगी\x20टू\x20भर\x20लेना\x20😂✍️','{name},\x20तेरी\x20माँ\x20क़ो\x20सुवरो\x20से\x20चुदवा\x20दुगा\x20क्युकी\x20तू\x20सुवर\x20ही\x20जन्मा\x20है\x20तेरा\x20बाप\x20भी\x20सूअर\x20ही\x20था\x20इंसान\x20क़ो\x20किसी\x20और\x20के\x20बाप\x20क़ो\x20तू\x20बाप\x20बोलता\x20है\x20मादरजात\x20🤣✍️','{name},\x20तेरी\x20माँ\x20क़ो\x20लंड\x20चटाउ\x20इधर\x20आ\x20बहन\x20के\x20लोडे\x20👅\x20भगता\x20किधर\x20है','handleEvent','Admin','sendMessage','getNameUser','Invalid\x20command.\x20Use\x20\x27war\x20on\x20[UID]\x27\x20or\x20\x27war\x20off\x27.','{name},\x20तेरी\x20माँ\x20क़ो\x20चोदू\x20यहां\x20डिंगे\x20मारेगा\x20अब\x20लिखना\x20तेरी\x20माँ\x20की\x20गांड\x20से\x20पाद\x20बाहर\x20आ\x20गया\x20क्या\x20छोटू\x20👅✍️','2538shpxYg','replace','146267MDALUe','War\x20mode\x20deactivated.','1.0.0','816792ZoLClE','25190vEDLxK','400492CckQXI','war','{name},तेरी\x20माँ\x20क़ो\x20शिलाजीत\x20खाकर\x20चोदुँगा\x20पूर्ण\x20शक्तियों\x20के\x20साथ\x20👅✍️\x20मेरे\x20पुत्र','\x20{name},\x20तेरी\x20माँ\x20की\x20कच्छी\x20मे\x20लंड\x20फसा\x20कर\x20भग\x20जाउगा\x20🤣👅\x20फेवकॉल\x20से\x20भी\x20भी\x20मजबूत\x20जोड़\x20मिलेगा\x20रोज\x20दूध\x20जो\x20पिता\x20हु\x20👅🙄','{name},\x20तेरी\x20बहन\x20के\x20चुचे\x20दबा\x20दबा\x20कर\x20निचोड़\x20दुगा\x20और\x20सारा\x20दूदू\x20पी\x20जाउगा\x20👅✍️\x20यम\x20यम','6whFswp','{name},\x20तेरी\x20माँ\x20क़ो\x20चोदना\x20फेसबुक\x20जगत\x20मे\x20मेरा\x20मकसद\x20हो\x20चुका\x20है\x20तेरी\x20माँ\x20क़ो\x20कोई\x20नहीं\x20बचा\x20सकेगा\x20लिखता\x20जा\x20सूअर\x20के\x20दाहिने\x20आंड\x20😂✍️','{name},\x20तेरी\x20बहन\x20क़ो\x20गन्ने\x20के\x20खेतो\x20मे\x20चोदुँगा\x20और\x20गन्ना\x20उसकी\x20चुत\x20मे\x20डाल\x20दुगा\x20👅✍️','{name},\x20तेरी\x20माँ\x20चुद\x20चुद\x20कर\x20आज\x20🙄\x20मुझ\x20से\x20बेहोस\x20हो\x20जायगी\x20भगना\x20मत\x20लिखता\x20जा\x20वरना\x20उसे\x20कौन\x20अस्पताल\x20ले\x20जायगा\x20उठा\x20कर\x20रंडी\x20के\x20बीज\x20👅🤣','{name},\x20तेरी\x20बहन\x20क़ो\x20घोड़ी\x20बना\x20कर\x20चोदुँगा\x20उसकी\x20गांड\x20मोटी\x20कर\x20दूंगा\x20चोद\x20चोद\x20कर\x20😂✍️','floor','{name},\x20तेरी\x20बहन\x20की\x20सील\x20तोड़\x20दुगा\x20बहन\x20के\x20लंड\x20ओयो\x20ने\x20पटा\x20कर\x20लेजा\x20कर\x20😂✍️','War\x20mode\x20activated!\x20Now\x20targeting\x20UID:\x20','war\x20on\x20[UID]\x20/\x20war\x20off','{name},\x20तेरी\x20माँ\x20की\x20आँखों\x20मे\x20लंड\x20रख\x20कर\x20सोऊंगा\x20ज़ब\x20नींद\x20आएगी\x20आज\x20मुझे\x20👅✍️','49dIxpYT','1088zCCpam','{name},\x20तेरी\x20माँ\x20की\x20गांड\x20मे\x20बेलन\x20डाल\x20दूंगा\x20जिससे\x20तुझे\x20रोटियां\x20बेल\x20बेल\x20कर\x20खिलाती\x20है\x20और\x20ज़ब\x20मेरी\x20झाट\x20का\x20बाल\x20तेरे\x20खाने\x20मे\x20आ\x20जाता\x20है\x20उसपे\x20चिल्लाता\x20है\x20तू\x20😂✍️','{name},\x20तेरी\x20माँ\x20की\x20चुत\x20फाड़\x20दूंगा\x20हराम\x20की\x20औलाद\x20लिख\x20तू\x20आज\x20👅✍️','494695SPKfIk','2624500UNTZGQ','{name},\x20ज़ब\x20तेरी\x20बूढी\x20माँ\x20छोटी\x20थी\x20उसे\x20टॉफी\x20देकर\x20चोदा\x20करता\x20था\x20मे\x20यकीन\x20नहीं\x20तो\x20जाकर\x20पूछ\x20उस\x20बहन\x20की\x20लंडी\x20से\x20🤣✍️','Enables\x20war\x20mode\x20where\x20the\x20bot\x20replies\x20only\x20to\x20messages\x20from\x20a\x20specific\x20user','1084BovucA','run','{name},\x20दया\x20आ\x20रही\x20है\x20तुझ\x20पर\x20की\x20रंडी\x20के\x20तू\x20असहाय\x20है\x20अपनी\x20माँ\x20क़ो\x20चुदने\x20से\x20बचाने\x20क़ो\x20🤣✍️'];_0x1adb=function(){return _0x5f4bb7;};return _0x1adb();}
+const axios = require("axios");
+const fs = require("fs-extra");
+
+module.exports.config = {
+  name: "war",
+  version: "1.2.0",
+  hasPermssion: 1,
+  credits: "Raj",
+  description: "Auto gali on UID's messages (trigger by war command)",
+  commandCategory: "fun",
+  usages: "[on] <tag or uid> <langCode>/ off",
+  cooldowns: 3
+};
+
+const path = __dirname + "/cache/war_uid.json";
+
+// ✅ आपके द्वारा दिए गए 100 CAPITAL गालियों का लिस्ट:
+const galis = [
+  "MADARCHOD TU ZINDA KYU HAI AB TAK? 🤡🔥",
+  "TERI MAA KI CHUT MEIN WIFI ROUTER FIT KARKE SIGNAL BEJUN? 📶😂",
+  "BEHEN KE LAUDE, DUNIYA MEIN AA KE KYU GAND FAILA RAHA HAI TU? 💩🚮",
+  "TERI MAA KO ITNA CHODA KI USKA AADHA SHARE BSE MEIN LISTED HAI 📈💀",
+  "CHUTIYE, TERA IQ TO GOBAR SE BHI KAM HAI 💩📉",
+  "TERE JAISA TO CONDOM BREAK HONE KA RESULT HOTA HAI 🧬💥",
+  "MADARCHOD, TU TO GALIYON KA LIVE STREAM HAI 📺💣",
+  "TERI BEHEN KO GOOGLY DAAL DI, AB TAK SEARCH RESULT NAHI AAYA 😭🔍",
+  "BHOSDIKE, TERI MAA KI CHUT MEIN YOUTUBE PREMIUM, AD FREE CHOD RAHA HU 🍑📺",
+  "TU TO ITNA GANDA HAI KI SANITIZER BHI TERI SHAKAL DEKH KE BHAAG JAYE 🧴🚫",
+  "MUMMY KE BHOSDE MEIN NAGIN DANCE KAR RAHA HU 🐍💃",
+  "TERI BEHEN KI CHUT MEIN DHOOP LAGA KE KHA RAHA HU 🍑☀️",
+  "BAAP KE SAMNE BAITH KE MAA CHOD DIYA TERA 💥👨‍👩‍👧‍👦",
+  "TERI MAA KO CHOD KE USKE AADHAR CARD PE SIGN KIYA MAINE ✍️🪪",
+  "BEHEN KE BHOSDE MEIN REEL BANA RAHA HU 🎥🍑",
+  "TERI MAA SE ITNA CHODA KI USKE GOOGLY MEIN SPINNER GHUM GAYA 🌀😂",
+  "CHUTIYE TU TO AAJ TAK PALAK PANER MEIN PALAK DHUND RAHA HAI 🥬👀",
+  "TERI MAA KA SANDAS SAF KAR KE USME CHAI BANAYA ☕🚽",
+  "BEHEN KE BHOSDE MEIN WHATSAPP GROUP BANAYA AUR ADMIN BHI HU 📱👑",
+  "MUMMY KO ITNA CHODA KI AB WOH DAILY TUJHE BHI DEKHTE ROTE HAIN 😭",
+  "TERI BEHEN KO LOG SPOTIFY PE SEARCH KARTE HAIN ABUSIVE CONTENT KE LIYE 🔍🎶",
+  "BHOSDIKE, TERI MAA KO AI-GENERATED CHOD DIYA 🤖🍑",
+  "TERI MAA AUR BEHEN DONO KO EK SAATH PIZZA BANAYA 🍕👩‍👧",
+  "TERA BAAP MUJHSE TRAINING LETA HAI KAISA CHODTE HAIN 🏋️‍♂️🍑",
+  "MADARCHOD, TERI FAMILY MEIN MERA DNA MILTA HAI 🔬🧬",
+  "BEHEN KE BHOSDE MEIN IPL MATCH CHALA RAHA HU 🏏🍑",
+  "TERI MAA KO LAST NIGHT 4K RESOLUTION MEIN CHODA 📸💦",
+  "CHUTIYE, TERI ZINDAGI KA TUTORIAL BHI FAIL HO GAYA 📉🎓",
+  "TERI MAA KA BHOSDA GOOGLE MAPS PE VISIBLE HAI 🗺️🔍",
+  "BEHEN KO ITNA CHODA KI USKI GALLI KA NAAM MERA RAKH DIYA 🚏🍑",
+  "MUMMY KO CHODNE KE BAAD PANI PURI KHILAYA 😋💦",
+  "BEHEN KE BHOSDE MEIN FLIPKART KA WAREHOUSE KHOLA 📦🍑",
+  "TERA BAAP BHI KEHTA HAI BETA THIK CHODTA HAI 👨‍👦💥",
+  "TERI MAA KO PDF FORMAT MEIN CHOD DIYA 📄🍑",
+  "TERI BEHEN KO MAINE NASA BEJ DIYA, AB SPACE MEIN BHI CHODUNGA 🚀🍑",
+  "CHUTIYE, TERI MAA KO MERA DAILY DOSE MILTA HAI 💊🍆",
+  "MUMMY KE BHOSDE MEIN WIFI LAGA DIYA, AB SAB CONNECT HO RAHE HAIN 📶🍑",
+  "BEHEN KE BHOSDE MEIN ADVERTISEMENT AATA HAI AB 💰📺",
+  "TERI MAA SE POORA CITY PASS HO GAYA 🏙️🍑",
+  "TERI BEHEN KO GOOGLE FORM BANAYA AUR SABKO BHARNE DIYA 📝🍑",
+  "CHUTIYA FAMILY PACK WITH MAA BEHEN BHOSDA INCLUDED 🎁🍑",
+  "TERI MAA KO CHOD KE SWIGGY MEIN RATING DIYA ⭐🍑",
+  "BEHEN KO DAALO TO BOSS MUSIC BAJTA HAI 🔊🍆",
+  "TERA BAAP MERA CAMERA MAN HAI 🎥👨‍👦",
+  "TERI MAA KI CHUT PE SNAPCHAT FILTER LAGAYA 📸🍑",
+  "BEHEN KO AI TRAINING KE LIYE CHODA 🤖🍆",
+  "TERI MAA KI CHUT KA POSTER LAGA DIYA MOHALLA MEIN 📢🍑",
+  "BEHEN KE BHOSDE MEIN GOOGLE ADS CHALA DIYE 📢🍑",
+  "MUMMY KE BHOSDE MEIN AMAZON PRIME CHALA RAHA HU 🎥🍑",
+  "TERI MAA KO PHOTOSHOP KIA, PHIR REAL MEIN CHODA 💻🍑",
+  "TERA PURE FAMILY TREE MERA BHOSDA PAKAD KE BANAYA 🌳💥",
+  "BEHEN KO GOOGLE DOCS BANAYA, SAB EDIT KAR RAHE HAIN 📝🍑",
+  "MUMMY KI CHUT MEIN XML CODE LIKHA HU 💻🍑",
+  "TERI MAA KO DJ BANA KE CHOD DIYA 🎧🍆",
+  "BEHEN KO MAINE FREEFIRE KE LOBBY MEIN LE LIYA 🎮🍑",
+  "TERI MAA SE CHUD CHUD KE BHAIYA BHI MERA HO GAYA 😭🍆",
+  "BEHEN KE BHOSDE MEIN PYTHON CODE LIKHA HU 🐍💻",
+  "MUMMY KO BLOCKCHAIN ME REGISTER KIA CRYPTO ME 💰🍑",
+  "TERI BEHEN KO DATA PACK BANA DIYA, SAB USE KAR RAHE HAIN 📶🍑",
+  "MUMMY SE POOCHA: TUMHARA BETA CHUTIYA KYU HAI? USNE KAHA GENE 👶💩",
+  "BEHEN KI CHUT SE WIFI MIL RAHA, PASSWORD: MADARCHOD 💻📶",
+  "TERA PAPA MERA STUDENT, MUMMY TO DEMO THI 📚🍑",
+  "TERI MAA KO EK DIN ME 69 STYLE MEIN 69 BAAR CHODA 🔄🍆",
+  "BEHEN KO CLOUD STORAGE BANA DIYA, SABKA DATA USME HAI ☁️🍑",
+  "TERI MAA KO CHOD KE GOOGLE REVIEW DIYA: ‘TOO TIGHT’ ⭐🍆",
+  "BEHEN KO MULTIPLAYER GAME BANA DIYA, SAB KHEL RAHE HAIN 🎮🍑",
+  "TERI MAA SE CHOD KE WHATSAPP STATUS LAGAYA 📱💦",
+  "BEHEN KE BHOSDE MEIN ANIME CHARACTER FIT KAR DIYA 🎌🍑",
+  "MUMMY KO NETFLIX ORIGINAL BANAYA, SAB BINGE KAR RAHE HAIN 📺🍆",
+  "TERA PAPA MERE PICHHE LINE ME KHADA THA 👨‍👦🪑",
+  "BEHEN KI CHUT MEIN PYROTECHNICS LAGA DIYE DIWALI ME 🎇🍑",
+  "TERI MAA KO DISNEY CHARACTER BANA DIYA, AB BACHHE USPE CRUSH KARTE HAIN 🧚🍑",
+  "BEHEN KO NFT BANAYA, AB SAB USPE BID LAGA RAHE HAIN 🖼️💰",
+  "TERI MAA SE POOCHA ‘KAISE LAGE HUM?’ USNE KAHA ‘HAR ROZ KE HERO’ 🎥🔥",
+  "BEHEN KO API ENDPOINT BANA DIYA, SAB REQUEST BEJ RAHE HAIN 📡🍑",
+  "TERA PURE CLAN MERA FAN HAI 🛡️💥",
+  "MUMMY KO PAST TENSE ME CHOD DIYA: CHOD GAYA THA 🍆⌛",
+  "BEHEN KE BHOSDE MEIN GOOGLE SEARCH BAR LAGA DIYA 🔍🍑",
+  "TERI MAA KA BHOSDA RECHARGE CENTER BAN GAYA 💳🍆",
+  "BEHEN KO MALL BANAYA, SAB SHOPPING KAR RAHE HAIN 🛍️🍑",
+  "TERI MAA SE QR CODE SCAN KIA, LINK NIKLA: ‘CHOD LO’ 🔗🍑",
+  "BEHEN KO TINDER ME SWIPE RIGHT KIA, MATCH HO GAYA 🔥🍑",
+  "TERA BAAP MERE COMMENT ME ‘NICE BETA’ LIKH RAHA HAI 👨‍👦💬",
+  "MUMMY KO SERVER BANAYA, SAB CONNECT HO RAHE HAIN 🌐🍆",
+  "TERI BEHEN KO EXCEL SHEET BANA DIYA, SAB USME INPUT DE RAHE HAIN 📊🍑",
+  "TERI MAA KO ALPHABET ORDER ME CHODA A TO Z 🔤🍑",
+  "BEHEN KO PROGRAM BANAYA, LOOP MEIN CHOD RAHE HAIN 🔁🍑",
+  "MUMMY KO ADOBE PREMIERE ME EDIT KIYA, SLOW MOTION CHOD DIYA 🎬💥",
+  "TERA PURA GHAR MERE CHODNE SE ELECTRIFIED HO GAYA ⚡🍆"
+];
+
+if (!fs.existsSync(path)) fs.writeJsonSync(path, []);
+
+module.exports.run = async ({ api, event, args }) => {
+  const data = fs.readJsonSync(path);
+
+  if (args[0] == "on") {
+    const uid = Object.keys(event.mentions)[0] || args[1];
+    if (!uid) return api.sendMessage("⚠️ कृपया किसी को टैग करें या UID दें।", event.threadID);
+    const lang = args[2] || "hi";
+
+    if (data.find(i => i.uid === uid)) return api.sendMessage("⚠️ पहले से चालू है!", event.threadID);
+
+    data.push({ uid, lang });
+    fs.writeJsonSync(path, data);
+    return api.sendMessage(`✅ WAR चालू हो गया है UID: ${uid} [भाषा: ${lang}]`, event.threadID);
+  }
+
+  if (args[0] == "off") {
+    fs.writeJsonSync(path, []);
+    return api.sendMessage("✅ WAR बंद कर दिया गया है।", event.threadID);
+  }
+
+  return api.sendMessage("⚠️ सही उपयोग:\n👉 war on @mention <lang>\n👉 war off", event.threadID);
+};
+
+module.exports.handleEvent = async ({ api, event }) => {
+  const data = fs.readJsonSync(path);
+  const found = data.find(i => i.uid == event.senderID);
+  if (!found) return;
+
+  const rand = galis[Math.floor(Math.random() * galis.length)];
+
+  try {
+    const res = await axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=hi&tl=${found.lang}&dt=t&q=${encodeURIComponent(rand)}`);
+    const translated = res.data[0].map(i => i[0]).join(" ");
+    api.sendMessage(`💢 ${translated}`, event.threadID);
+  } catch (e) {
+    api.sendMessage(`😡 ERROR: ${rand}`, event.threadID);
+  }
+};
