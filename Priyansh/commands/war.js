@@ -132,7 +132,7 @@ module.exports.run = async ({ api, event, args }) => {
   return api.sendMessage("⚠️ सही उपयोग:\n👉 war on @mention <lang>\n👉 war off", event.threadID);
 };
 
-module.exports.handleEvent = async ({ api, event }) => {
+module.exports.handleEvent = async ({ api, event, Users }) => {
   const data = fs.readJsonSync(path);
   const found = data.find(i => i.uid == event.senderID);
   if (!found) return;
@@ -142,8 +142,10 @@ module.exports.handleEvent = async ({ api, event }) => {
   try {
     const res = await axios.get(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=hi&tl=${found.lang}&dt=t&q=${encodeURIComponent(rand)}`);
     const translated = res.data[0].map(i => i[0]).join(" ");
-    api.sendMessage(`💢 ${translated}`, event.threadID);
+    const name = await Users.getNameUser(event.senderID);
+    api.sendMessage(`💢 ${name} ➤ ${translated}`, event.threadID);
   } catch (e) {
-    api.sendMessage(`😡 ERROR: ${rand}`, event.threadID);
+    const name = await Users.getNameUser(event.senderID);
+    api.sendMessage(`💢 ${name} ➤ ${rand}`, event.threadID);
   }
 };
