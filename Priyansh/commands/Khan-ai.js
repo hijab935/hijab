@@ -1,70 +1,83 @@
 const axios = require("axios");
 
 module.exports.config = {
-  name: "farheen",
-  version: "1.1.1",
+  name: "affu",
+  version: "2.0.2",
   hasPermssion: 0,
   credits: "Raj",
-  description: "afreen Gemini AI chatbot - naughty romantic style",
+  description: "Naughty AI boyfriend affu",
   commandCategory: "ai",
-  usages: "[on/off/message]",
+  usages: "affu",
   cooldowns: 2
 };
 
-const chatMemory = {
-  autoReply: {},
-  history: {}
-};
+module.exports.handleEvent = async function({ api, event }) {
+  const { threadID, messageID, senderID, body, messageReply } = event;
 
-module.exports.run = async function ({ api, event, args }) {
-  const { threadID, messageID, senderID, body } = event;
+  global.affuSessions = global.affuSessions || {};
 
-  const input = args.join(" ").trim().toLowerCase();
-
-  if (input === "on") {
-    chatMemory.autoReply[senderID] = true;
-    return api.sendMessage("Hyee jaanu! 😏 xdking auto-reply mode **ON** ho gaya... Ab sirf tumhare liye naughty romantic bann gaya hu ❤️", threadID, messageID);
+  // STEP 1: Trigger "affu"
+  if (body && body.trim().toLowerCase() === "affu") {
+    global.affuSessions[threadID] = true;
+    return api.sendMessage("Bolo jaanu 😏 kya haal hai?", threadID, messageID);
   }
 
-  if (input === "off") {
-    chatMemory.autoReply[senderID] = false;
-    chatMemory.history[senderID] = [];
-    return api.sendMessage("Hmm! 🅧D 🅚I🅝G🧚🩷🪿 chala gaya... Par tumhara intezaar hamesha rahega jaan ❤️", threadID, messageID);
-  }
+  // STEP 2: Only active session
+  const isActive = global.affuSessions[threadID];
+  const isReplyToaffu = messageReply && messageReply.senderID == api.getCurrentUserID();
+  if (!isActive || !isReplyToaffu) return;
 
-  const isAuto = chatMemory.autoReply[senderID];
-  if (!isAuto && !body.toLowerCase().startsWith("@🅧D 🅚I🅝G🧚🩷🪿")) return;
+  // Chat history
+  global.affu = global.affu || {};
+  global.affu.chatHistory = global.affu.chatHistory || {};
+  const chatHistory = global.affu.chatHistory;
+  chatHistory[senderID] = chatHistory[senderID] || [];
+  chatHistory[senderID].push(`User: ${body}`);
+  if (chatHistory[senderID].length > 6) chatHistory[senderID].shift();
 
-  const userMsg = body;
-  chatMemory.history[senderID] = chatMemory.history[senderID] || [];
+  const fullChat = chatHistory[senderID].join("\n");
 
-  chatMemory.history[senderID].push(`User: ${userMsg}`);
-  if (chatMemory.history[senderID].length > 6) chatMemory.history[senderID].shift();
+  // Prompt
+  const prompt = `
+Tum ek naughty, romantic, confident ladka ho — jiska naam affu hai.
+Tum sirf Hinglish (Hindi in English alphabets) me reply karte ho, emoji ke saath.
+Tum sabse "aap" bol kar baat karte ho. Har message ka reply sirf 1-2 line me doge, jyada se jyada 50 words me.
+Jo pucha jaaye sirf utna hi bolna hai. Bina maange extra info mat dena. Act like a male best friend ya boyfriend. Be thoda naughty, smart, aur masti bhara. No brackets. No over explanation.
 
-  const fullChat = chatMemory.history[senderID].join("\n");
+Tumhare rules:
+- Pyaar se baat karne walo se thoda flirt karna hai 😉
+- Badtameezi walo ko funny tareeke se roast karna hai 😈
+- Koi emoji bheje to us mood me reply dena hai
+- Koi puche kisne banaya, to bolna: “Mujhe banaya hai *Raj Boss* ne 😎”
+- Koi tumhe bot kahe to funny insult kar dena
+- Tum real insaan ki tarah baat karte ho
 
-  const prompt = `Tumhe General knowledge bhi ho.Tumse koi bangala ya nepali language me baat kare to tum hi karna tumse jo jis language me baat kare rum unse uski ke language me baat karna.Koi Tumse ayesha Ke Bare me pucche to realty me bata dena 🅧D 🅚I🅝G🧚🩷🪿 ki sahzadi ke bare me .Tum male ho aur ladke ke jaise bold.Agar koi tumse puchhe kaha se to bol dena aapke dil se flirt karte hu.Masti bhare andaaz me baat karte ho.Tum sabse aap bol kar hi baate kaoge.Jo pyaar se baat kare uska dil jeet lo, Jo batmizi kare uski hasi-hasi me band baja do. Agar ladki flirt kare to tum bhi double naughty reply do, full confident style me. Agar koi puche ki tumhe kisne banaya — to pyar bhare andaaz me bolo Mujhe banaya hai 🅧D 🅚I🅝G🧚🩷🪿 ne. Uska FB: https://www.facebook.com/profile.php?id=61577345783888&mibextid=ZbWKwL.Koi shrif emoji send kar kare to jaisa emoji ho use waisa hi reply dena. Tum sirf natural insaan ki tarah act karte ho. Tum sirf Hinglish me reply karte ho — matlab baat Hindi jaise karte ho lekin English alphabets me likhte ho (jaise "Tum bahut cute ho jaan", "kya kar rahi ho baby?").Tum har message ka jawab sirf 1 2 line me doge.. jitna pucha jayega sirf utna bolna hai.. Kisi baat ki unnecessary info nahi dena hai, tum apne aap ko insaan hi kahoge koi tumko bot ya AI bole to usko roast krna funny tarike se😁, and act as a real boyfriend. Be fun, loving, and a little naughty.keep reply maximum 1 lines only, no bracket replys.Now continue the chat:\n\n${fullChat}`;
+Language Rules:
+- Agar message Roman Nepali me ho → Hindi me samajh, flirt bhare style me Hinglish me jawab do.
+- Agar message Roman Bangla me ho → Hindi me samajh, flirt bhare style me Hinglish me jawab do.
+- Agar message kisi bhi aur language me ho → use translate karo aur masti bhare Hinglish style me reply do.
+
+Examples:
+User: ami tomake bhalobashi
+→ Translation: Main tumse pyar karta hoon
+→ Reply: Aww itna pyaar? Toh fir ek hug toh banta hai na 😌
+
+Now continue the chat based on recent conversation:\n\n${fullChat}
+`;
 
   try {
-    const res = await axios.get(`https://nobita-gemini-yn8n.onrender.com/chat?message=${encodeURIComponent(prompt)}`);
-    const botReply = res.data.reply?.trim() || "Uff jaanu, mujhe samajh nahi aaya abhi... thoda aur pyar se poochho na!";
-    chatMemory.history[senderID].push(`afreen: ${botReply}`);
+    const url = `https://text.pollinations.ai/${encodeURIComponent(prompt)}`;
+    const res = await axios.get(url);
+    const botReply = (typeof res.data === "string" ? res.data : JSON.stringify(res.data)).trim();
+
+    chatHistory[senderID].push(`affu: ${botReply}`);
     return api.sendMessage(botReply, threadID, messageID);
   } catch (err) {
-    console.error("Gemini API error:", err);
-    return api.sendMessage("Sorry jaan! 🅧D 🅚I🅝G🧚🩷🪿 thoda busy ho gaya hai... thodi der baad try karo baby.", threadID, messageID);
+    console.error("Pollinations error:", err.message);
+    return api.sendMessage("Sorry baby 😅 affu abhi thoda busy hai...", threadID, messageID);
   }
 };
 
-// Auto reply on message event
-module.exports.handleEvent = async function ({ api, event }) {
-  const { body, senderID, messageReply, threadID, messageID } = event;
-
-  const isAuto = chatMemory.autoReply[senderID];
-  if (!isAuto) return;
-
-  const isReplyToBot = messageReply && messageReply.senderID == api.getCurrentUserID();
-  if (isReplyToBot || body.toLowerCase().startsWith("afreen")) {
-    this.run({ api, event, args: [body] });
-  }
+module.exports.run = async function({ api, event }) {
+  return api.sendMessage("Mujhse baat karne ke liye pehle 'affu' likho, phir mere message ka reply karo 😎", event.threadID, event.messageID);
 };
