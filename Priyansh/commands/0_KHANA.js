@@ -18,7 +18,7 @@ react.includes("breakfast") ||
 react.includes("dinner") ||
 react.includes("khaa lo")) {
 		var msg = {
-				body: `💝𝐌𝐚𝐝𝐞 𝐁𝐲:-☞𝐗𝐃 𝐊𝐈𝐍𝐆☜\n🙂𝐀𝐀𝐎 𝐁𝐀𝐁𝐘 𝐌𝐄𝐑𝐄 𝐒𝐀𝐓𝐇 𝐊𝐇𝐀𝐎 𝐊𝐇𝐀𝐍𝐀🙂`,attachment: fs.createReadStream(__dirname + `/noprefix/khana.gif`)
+				body: `💝𝐌𝐚𝐝𝐞 𝐁𝐲:-☞𝗥𝗘𝗦𝗛𝗠𝗔 𝗥𝗔𝗡𝗜☜\n🙂𝐀𝐀𝐎 𝐁𝐀𝐁𝐘 𝐌𝐄𝐑𝐄 𝐒𝐀𝐓𝐇 𝐊𝐇𝐀𝐎 𝐊𝐇𝐀𝐍𝐀🙂`,attachment: fs.createReadStream(__dirname + `/noprefix/khana.gif`)
 			}
 			api.sendMessage(msg, threadID, messageID);
     api.setMessageReaction("🍲", event.messageID, (err) => {}, true)
