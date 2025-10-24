@@ -13,7 +13,7 @@ module.exports.handleEvent = function({ api, event }) {
   var { threadID, messageID } = event;
   if (event.body.indexOf("wellcome")==0 || (event.body.indexOf("@")==0 || (event.body.indexOf("wlcm")==0 || (event.body.indexOf("welcome")==0)))) {
     var msg = {
-        body: "✰─━━◉❖🅧D 🅚I🅝G🧚🩷🪿❖◉━━─\n─━━◉❖ 𝐰𝐞𝐥𝐥𝐜𝐨𝐦𝐞 𝐡𝐨 𝐠𝐲𝐚 𝐣𝐢🤗❖◉━━─  ❥═≛🥰 𝐮𝐦𝐦𝐚 😘 𝐮𝐦𝐦𝐚💋≛═❥  ─━━◉❖𝐭𝐡𝐚 💘 𝐭𝐡𝐚 👻𝐤𝐚𝐥 𝐤🙌❖◉━━─✺\n◉❖𝐚𝐲𝐞𝐬𝐡𝐚≛𝐤𝐡𝐚𝐧❖◉:",
+        body: "✰─━━◉❖𝗥𝗘𝗦𝗛𝗠𝗔 𝗥𝗔𝗡𝗜🧚🩷🪿❖◉━━─\n─━━◉❖ 𝐰𝐞𝐥𝐥𝐜𝐨𝐦𝐞 𝐡𝐨 𝐠𝐲𝐚 𝐣𝐢🤗❖◉━━─  ❥═≛🥰 𝐮𝐦𝐦𝐚 😘 𝐮𝐦𝐦𝐚💋≛═❥  ─━━◉❖𝐭𝐡𝐚 💘 𝐭𝐡𝐚 👻𝐤𝐚𝐥 𝐤🙌❖◉━━─✺\n◉❖𝐑𝐄𝐒𝐇𝐌𝐀❖◉:",
         attachment: fs.createReadStream(__dirname + `/noprefix/welcome.mp4`)
       }
       return api.sendMessage(msg, threadID, messageID);
