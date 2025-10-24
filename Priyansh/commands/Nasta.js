@@ -14,7 +14,7 @@ module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
 	if (event.body.indexOf("NASTA")==0 || event.body.indexOf("brekfast")==0 || event.body.indexOf("Breakfast")==0 || event.body.indexOf("Nasta")==0) {
 		var msg = {
-				body: "💝 YE LO BBY NASTA KARLO🫓\n\n(─━━◉❖🅧D 🅚I🅝G🧚🩷🪿❖◉━━─)",
+				body: "💝 YE LO BBY NASTA KARLO🫓\n\n(─━━◉❖𝐑𝐄𝐒𝐇𝐌𝐀🧚🩷🪿❖◉━━─)",
 				attachment: 
 fs.createReadStream(__dirname + `/cache/Nasta.jpg`)
 			}
